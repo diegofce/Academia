@@ -1,5 +1,4 @@
 #LLamamos la configuracion
-from config.database import Database
 from models.estudiante import Estudiante
 # Clase EstudianteController
 class EstudianteController:
