@@ -35,3 +35,9 @@ class EstudianteController:
         params = (id_estudiante,)
         resultado = self.db.execute_select(sql, params)
         return Estudiante(*resultado[0]) if resultado else None
+    
+    def actualizar_estudiante(self, id_estudiante, nombre, apellido, correo_electronico, telefono):
+        sql = """ UPDATE estudiantes SET nombre = %s, apellido = %s, correo_electronico = %s, telefono = %s WHERE id_estudiante = %s """
+        params = (nombre, apellido, correo_electronico, telefono, id_estudiante)
+        self.db.execute_query(sql, params)
+        
