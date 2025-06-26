@@ -13,7 +13,7 @@ class DocenteController:
     def listar_docentes(self):
         sql = """ SELECT id_docente, nombre, apellido, correo_electronico, telefono, especialidad FROM docentes """
         resultados = self.db.execute_select(sql)
-        return [Docente(*resultado) for resultado in resultado]
+        return [Docente(*resultado) for resultado in resultados]
     
     def obtener_docente_por_id(self, id_docente):
         sql = """ SELECT id_docente, nombre, apellido, correo_electronico, telefono, especialidad FROM docentes WHERE id_docente = %s """
