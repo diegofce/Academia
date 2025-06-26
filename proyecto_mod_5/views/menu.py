@@ -10,6 +10,7 @@ def menu_principal(db):
         print("Bienvenido al sistema de gestión de estudiantes")
         print("1. Registrar estudiante")
         print("2. Listar estudiantes")
+        print("3. Obtener estudiante por ID")
         print("5. Salir")
         opcion = input("Seleccione una opción: ")
 
@@ -17,6 +18,8 @@ def menu_principal(db):
             registrar_estudiante(estudiante_controller)
         elif opcion == '2':
             listar_estudiantes(estudiante_controller)
+        elif opcion == '3':
+            obtener_estudiante_por_id(estudiante_controller)
         elif opcion == '5':
             print("Saliendo del sistema. ¡Hasta luego!")
             break
@@ -50,3 +53,19 @@ def listar_estudiantes(estudiante_controller):
             print("No hay estudiantes registrados.")
     except Exception as e:
         print(f"Error al listar los estudiantes: {str(e)}")
+        
+    
+def obtener_estudiante_por_id(estudiante_controller):
+    print("=== ** Obtener estudiante por ID ** ===")
+    id_estudiante = int(input("Ingrese el ID del estudiante: "))
+    try:
+        estudiante = estudiante_controller.obtener_estudiante_por_id(id_estudiante)
+        if estudiante:
+            print(f"ID: {estudiante.id_estudiante}")
+            print(f"Nombre: {estudiante.nombre}")
+            print(f"Apellido: {estudiante.apellido}")
+            print(f"Correo: {estudiante.correo_electronico}")
+            print(f"Teléfono: {estudiante.telefono}")
+    except Exception as e:
+        print(f"Error al obtener el estudiante: {str(e)}")
+            
