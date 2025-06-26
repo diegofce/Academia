@@ -12,7 +12,8 @@ def menu_principal(db):
         print("2. Listar estudiantes")
         print("3. Obtener estudiante por ID")
         print("4. Actualizar estudiante")
-        print("5. Salir")
+        print("5. Eliminar estudiante")
+        print("6. Salir")
         opcion = input("Seleccione una opción: ")
 
         if opcion == '1':
@@ -24,6 +25,8 @@ def menu_principal(db):
         elif opcion == '4':
             actualizar_estudiante(estudiante_controller)
         elif opcion == '5':
+            eliminar_estudiante(estudiante_controller)
+        elif opcion == '6':
             print("Saliendo del sistema. ¡Hasta luego!")
             break
         else:
@@ -86,3 +89,11 @@ def actualizar_estudiante(estudiante_controller):
     except Exception as e:
         print(f"Error al actualizar el estudiante: {str(e)}")
         
+def eliminar_estudiante(estudiante_controller):
+    print("=== ** Eliminar estudiante ** ===")
+    id_estudiante = int(input("Ingrese el ID del estudiante: "))
+    try:
+        estudiante_controller.eliminar_estudiante(id_estudiante)
+        print("Estudiante eliminado exitosamente.")
+    except Exception as e:
+        print(f"Error al eliminar el estudiante: {str(e)}")

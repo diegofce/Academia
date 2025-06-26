@@ -41,3 +41,8 @@ class EstudianteController:
         params = (nombre, apellido, correo_electronico, telefono, id_estudiante)
         self.db.execute_query(sql, params)
         
+    def eliminar_estudiante(self, id_estudiante):
+        sql = """ DELETE FROM estudiantes WHERE id_estudiante = %s """
+        params = (id_estudiante,)
+        self.db.execute_query(sql, params)
+        
